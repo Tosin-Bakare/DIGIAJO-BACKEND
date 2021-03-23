@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const Group = require('../models/group');
+
+
 router.get('/', (req, res, next) => {
     res.status(200).json({
         message: 'Handling GET requests to /groups'
@@ -8,11 +11,11 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const groups = {
-        name: req.body.name,
+    const group = new Group({
+        _id: new mongoose.Types.ObjectId(),
+        groupName: req.body.groupName,
         groupLimit: req.body.groupLimit
-
-    };
+    });
     res.status(201).json({
         message: 'Handling POST requests to /groups',
         createdGroups: groups

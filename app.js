@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const groupsRoutes = require('./api/routes/groups');
 const savingsRoutes = require('./api/routes/savings');
+
+mongoose.connect('mongodb://localhost/digiajo', { useNewUrlParser: true }).then(() => console.log('working db'))
 
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
