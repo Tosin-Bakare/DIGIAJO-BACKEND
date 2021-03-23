@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const groupSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
+    _id: mongoose.Schema.Types.ObjectId,
     groupName: String,
     groupLimit: Number,
 });
