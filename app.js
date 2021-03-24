@@ -9,6 +9,8 @@ const savingsRoutes = require('./api/routes/savings');
 
 mongoose.connect('mongodb://localhost/digiajo', { useNewUrlParser: true }).then(() => console.log('working db'))
 
+mongoose.Promise = global.Promise;
+
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
