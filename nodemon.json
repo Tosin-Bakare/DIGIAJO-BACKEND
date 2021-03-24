@@ -1,5 +1,6 @@
 {
   "env": {
-    "MONGO_ATLAS_PW": "mongodb://localhost/digiajo"
+    "MONGO_ATLAS_PW": "mongodb://localhost/digiajo",
+    "JWT_KEY": "secret"
   }
 }

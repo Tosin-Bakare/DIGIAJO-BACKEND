@@ -10,6 +10,7 @@ const Group = require('../models/group')
 router.get('/', (req, res, next) => {
     Saving.find()
         .select('group amount _id')
+        .populate('group', 'groupName')
         .exec()
         .then(docs => {
             res.status(200).json({
@@ -73,6 +74,7 @@ router.post('/', (req, res, next) => {
 });
 router.get('/:savingsId', (req, res, next) => {
     Saving.findById(req.params.orderId)
+        .populate('group')
         .exec()
         .then(order => {
             if (!saving) {
