@@ -7,8 +7,8 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        match: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/
     },
+    picture: { type: String, default: "https://www.minervastrategies.com/wp-content/uploads/2016/03/default-avatar.jpg" },
     password: { type: String, required: true },
 });
 
