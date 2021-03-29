@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 router.post('/signup', (req, res, next) => {
+    console.log(req.body);
     User.find({ email: req.body.email })
         .exec()
         .then(user => {
@@ -69,7 +70,7 @@ router.post('/login', (req, res, next) => {
                             email: user[0].email,
                             userId: user[0]._id
                         },
-                        mongodb.JWT_KEY,
+                        process.env.JWT_KEY,
                         {
                             expiresIn: "1h"
                         }

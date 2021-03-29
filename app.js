@@ -1,17 +1,11 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const cors = require('cors');
 // const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const groupsRoutes = require('./api/routes/groups');
-const savingsRoutes = require('./api/routes/savings');
-const userRoutes = require("./api/routes/user");
-
-mongoose.connect('mongodb://localhost/digiajo', { useNewUrlParser: true }).then(() => console.log('working db'))
-
-mongoose.Promise = global.Promise;
-
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -25,6 +19,16 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+const groupsRoutes = require('./api/routes/groups');
+const savingsRoutes = require('./api/routes/savings');
+const userRoutes = require("./api/routes/user");
+
+mongoose.connect('mongodb://localhost/digiajo', { useNewUrlParser: true }).then(() => console.log('working db'))
+
+mongoose.Promise = global.Promise;
+
+
 
 // Routes which should handle requests
 app.use('/groups', groupsRoutes);
